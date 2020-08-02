@@ -1,0 +1,26 @@
+•	Run a nginx basic container: 
+docker run -itd -p 80:80 nginx
+•	Modify the hello.html by connecting to container
+docker exec -it e91425ececef /bin/bash
+•	cd /usr/share/nginx/html
+•	cat > index.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to container !!!</h1>
+</body>
+</html>
+
+•	docker commit e91425ececef learnawswithus/nginx_custom:welcome   (input: normal nginx container id)
+•	docker run -itd --name custom_nginx1 -p 9898:80 learnawswithus/nginx_custom:welcome
+•	docker push learnawswithus/nginx_custom:welcome
